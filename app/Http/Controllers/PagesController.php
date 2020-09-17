@@ -27,10 +27,11 @@ class PagesController extends Controller
 
     public function product_category($slug, Request $request){
         $category = Category::where('slug', '=', $slug)->first();
+        $limit = 8;
         if(!$category) return redirect()->route('home');
         if(Auth::user()) $data['user_role'] = User::role();
-        if($request['query']) $data['products'] = Product::where('category_id', '=', $category->id)->where('name', 'LIKE', '%'.$request['query'].'%')->paginate(1);
-        else $data['products'] = Product::where('category_id', '=', $category->id)->where('name', 'LIKE', '%'.$request->query.'%')->paginate(1);
+        if($request['query']) $data['products'] = Product::where('category_id', '=', $category->id)->where('name', 'LIKE', '%'.$request['query'].'%')->paginate($limit);
+        else $data['products'] = Product::where('category_id', '=', $category->id)->paginate($limit);
 
         $data['date'] = Carbon::now()->format('l, d F Y');
         return view('pages.products.product_list')->with($data);
