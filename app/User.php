@@ -5,10 +5,22 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    public static function isRole($role){
+        $user_type = UserType::find(Auth::user()->type_id);
+        if($user_type->name == $role) return true;
+        else return false;
+    }
+
+    public static function role(){
+        $user_type = UserType::find(Auth::user()->type_id);
+        return $user_type->name;
+    }
 
     /**
      * The attributes that are mass assignable.

@@ -20,5 +20,15 @@ class UserSeeder extends Seeder
             'dob' => '2000-01-11',
             'address' => 'kalimantan barat',
         ]);
+
+        DB::table('users')->insert([
+            'username' => 'user',
+            'email' => 'user@user.com',
+            'type_id' => 1,
+            'password' => Hash::make('12345678'),
+            'gender' => 'M',
+            'dob' => '2000-01-11',
+            'address' => 'kalimantan barat',
+        ]);
     }
 }
