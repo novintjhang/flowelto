@@ -67,8 +67,8 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @if ($user_role == 'MANAGER')
-                                        <a class="dropdown-item" href="#">{{ __('Add Flower') }}</a>
-                                        <a class="dropdown-item" href="#">{{ __('Manage Categories') }}</a>
+                                        <a class="dropdown-item" href="{{ route('products.create') }}">{{ __('Add Flower') }}</a>
+                                        <a class="dropdown-item" href="{{ route('categories.index') }}">{{ __('Manage Categories') }}</a>
                                     @else
                                         <a class="dropdown-item" href="#">{{ __('My Cart') }}</a>
                                         <a class="dropdown-item" href="#">{{ __('Transaction History') }}</a>
