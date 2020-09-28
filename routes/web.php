@@ -18,11 +18,15 @@ Auth::routes();
 Route::get('/', 'PagesController@index')->name('home');
 Route::get('categories', 'PagesController@categories')->name('category');
 Route::get('category/{slug}', 'PagesController@product_category')->name('product_category');
+Route::post('category/{slug}', 'PagesController@product_category')->name('product_category');
 Route::get('product/{slug}', 'PagesController@product')->name('product');
+Route::get('checkout', 'CartsController@checkout')->name('cart.checkout');
 
 //User
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('changepassword', 'ChangePasswordController');
+    Route::resource('cart', 'CartsController');
+    Route::resource('transaction', 'TransactionsController');
 });
 
 //Manager

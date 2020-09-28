@@ -18,6 +18,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -45,7 +46,9 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="categoriesDropdown">
-                                <a class="dropdown-item" href="#">{{ __('#') }}</a>
+                                @foreach($categories as $category)
+                                    <a class="dropdown-item" href="{{ route('product_category', $category->slug)}}">{{ $category->name }}</a>
+                                @endforeach
                             </div>
                         </li>
 
@@ -66,12 +69,12 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    @if ($user_role == 'MANAGER')
+                                    @if (App\User::isRole('MANAGER'))
                                         <a class="dropdown-item" href="{{ route('products.create') }}">{{ __('Add Flower') }}</a>
                                         <a class="dropdown-item" href="{{ route('categories.index') }}">{{ __('Manage Categories') }}</a>
                                     @else
-                                        <a class="dropdown-item" href="#">{{ __('My Cart') }}</a>
-                                        <a class="dropdown-item" href="#">{{ __('Transaction History') }}</a>
+                                        <a class="dropdown-item" href="{{ route('cart.index') }}">{{ __('My Cart') }}</a>
+                                        <a class="dropdown-item" href="{{ route('transaction.index') }}">{{ __('Transaction History') }}</a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('changepassword.index') }}">{{ __('Change Password') }}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

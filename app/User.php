@@ -13,8 +13,7 @@ class User extends Authenticatable
 
     public static function isRole($role){
         $user_type = UserType::find(Auth::user()->type_id);
-        if($user_type->name == $role) return true;
-        else return false;
+        return ($user_type->name == $role);
     }
 
     public static function role(){

@@ -1,0 +1,43 @@
+.description {
+    width: 80%;
+    overflow-wrap: break-word;
+    padding-top: 5px;
+    font-size: 12px;
+}
+
+.price {
+    color: gold;
+    font-weight: 500;
+}
+
+.thumbnail {
+    min-width: 300px; 
+    height: 300px !important;
+}
+
+.add_to_cart {
+    padding-top: 15px;
+}
+
+.cart-table {
+    width: 100%;
+    background-color: grey;
+}
+
+.cart-table td {
+    text-align: center !important; 
+    vertical-align: middle !important;
+}
+
+.cart-items {
+    text-align: center;
+}
+
+.cart-thumbnail {
+    width: 150px !important;
+    height: 150px !important;
+}
+
+.center {
+    text-align: center;
+}

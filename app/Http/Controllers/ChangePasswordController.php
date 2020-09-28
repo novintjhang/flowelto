@@ -8,6 +8,7 @@ use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use Carbon\Carbon;
+use App\Category;
 
 class ChangePasswordController extends Controller
 {
@@ -25,6 +26,7 @@ class ChangePasswordController extends Controller
     public function index()
     {
         $data['date'] = Carbon::now()->format('l, d F Y');
+        $data['categories'] = Category::all();
         if(Auth::user()) $data['user_role'] = User::role();
         return view('auth.changepassword')->with($data);
     }

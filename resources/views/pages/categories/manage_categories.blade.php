@@ -9,12 +9,12 @@
                 <div class="card text-center">
                     <div class="card-body">
                         <a href="{{ route('product_category', $category->slug)}}">
-                            <img src="{{ asset('images/'.$category->thumbnail) }}" alt="Flowelto Category Thumbnail" class="img-thumbnail" style="width: 300px; height: 300px;">
+                            <img src="{{ asset('images/'.$category->thumbnail) }}" alt="Flowelto Category Thumbnail" class="img-thumbnail thumbnail">
 
                             <h6 class="pt-4 ">{{ $category->name }}</h6>
                         </a>
                         @auth
-                            @if($user_role == "MANAGER")
+                            @if(App\User::isRole('MANAGER'))
                                 <div class="row pt-2 justify-content-center">
                                     <form method="POST" action="{{ route('categories.destroy', $category->id) }}">
                                         {{ csrf_field() }}

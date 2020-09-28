@@ -4,22 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
-use App\Category;
-use App\User;
 use Carbon\Carbon;
-use File;
+use App\User;
+use App\Transaction;
+use App\TransactionDetail;
+use App\Category;
 
-
-
-class CategoriesController extends Controller
+class TransactionsController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -30,8 +26,8 @@ class CategoriesController extends Controller
         if(Auth::user()) $data['user_role'] = User::role();
         $data['date'] = Carbon::now()->format('l, d F Y');
         $data['categories'] = Category::all();
-        if($data['categories']) return view('pages.categories.manage_categories')->with($data);
-        else return redirect()->route('home');
+        $data['transactions'] = Transaction::where('user_id', '=', Auth::User()->id)->orderBy('created_at', 'desc')->get();
+        return view('pages.transactions')->with($data);
     }
 
     /**
@@ -41,7 +37,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -63,7 +59,11 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        //
+        if(Auth::user()) $data['user_role'] = User::role();
+        $data['date'] = Carbon::now()->format('l, d F Y');
+        $data['categories'] = Category::all();
+        $data['items'] = TransactionDetail::where('transaction_id', '=', $id)->join('products', 'products.id' ,'=', 'product_id')->get();
+        return view('pages.detail_transaction')->with($data);
     }
 
     /**
@@ -74,12 +74,7 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        if(Auth::user()) $data['user_role'] = User::role();
-        $data['date'] = Carbon::now()->format('l, d F Y');
-        $data['categories'] = Category::all();
-        $data['category'] = Category::find($id);
-        if($data['category']) return view('pages.categories.edit_category')->with($data);
-        else return redirect()->route('home');
+        //
     }
 
     /**
@@ -91,29 +86,7 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, array(
-            'name' => 'required|unique:categories|min:5',
-            'thumbnail' => 'nullable|mimes:jpeg,jpg,png,bmp,tiff,svg|max:4096',
-        ));
-        
-        $category = Category::find($id);
-        $category->slug = strtolower(Str::slug($request->name, '-'));
-        $category->name = $request->name;
-
-        if($request->file('thumbnail')){
-            $file = $request->file('thumbnail');
-
-            $name = strtolower(Str::random(10));
-            $ext = strtolower($file->getClientOriginalExtension());
-            $path = public_path('images/');
-
-            $filename = $name.'-'.time().".".$ext;
-            $file->move($path, $filename);
-            $category->thumbnail = $filename;
-        }
-        
-        $category->save();
-        return redirect()->back();
+        //
     }
 
     /**
@@ -124,9 +97,6 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
-        $category->delete();
-
-        return redirect()->back();
+        //
     }
 }
