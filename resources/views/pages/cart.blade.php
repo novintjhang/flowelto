@@ -12,10 +12,10 @@
                     @foreach($items as $item)
                         <tr>
                             <td class="cart-items">
-                                <img src="{{ asset('images/'.$item->thumbnail) }}" alt="Flowelto Product Thumbnail" class="img-thumbnail cart-thumbnail">
+                                <img src="{{ Storage::url($item->product->thumbnail) }}" alt="Flowelto Product Thumbnail" class="img-thumbnail cart-thumbnail">
                             </td>
-                            <td>{{ $item->name }}</td>
-                            <td>{{ $item->price }}</td>
+                            <td>{{ $item->product->name }}</td>
+                            <td>{{ $item->product->price }}</td>
                             <td>
                                 <form method="POST" action="{{ route('cart.update', $item->id) }}" enctype="multipart/form-data">
                                     {{ csrf_field() }}

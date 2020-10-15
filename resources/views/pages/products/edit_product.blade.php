@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center pt-4">
         <div class="col-md-3">
-            <img src="{{ asset('images/'.$product->thumbnail) }}" alt="Flowelto Category Thumbnail" class="img-thumbnail thumbnail">
+            <img src="{{ Storage::url($product->thumbnail) }}" alt="Flowelto Category Thumbnail" class="img-thumbnail thumbnail">
         </div>
         <div class="col-md-6 pl-5">
             @foreach ($errors->all() as $error)

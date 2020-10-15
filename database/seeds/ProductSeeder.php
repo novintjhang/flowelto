@@ -14,7 +14,7 @@ class ProductSeeder extends Seeder
         DB::table('products')->insert([
             'slug' => strtolower(Str::slug('TEST2', '-')),
             'name' => 'TEST2',
-            'thumbnail' => 'default.svg',
+            'thumbnail' => 'images/default.svg',
             'category_id' => 1,
             'price' => 100000,
             'description' => 'TEST',

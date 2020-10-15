@@ -19,7 +19,7 @@
                 <div class="card text-center">
                     <div class="card-body">
                         <a href="{{ route('product', $product->slug)}}">
-                            <img src="{{ asset('images/'.$product->thumbnail) }}" alt="Flowelto Category Thumbnail" class="img-thumbnail thumbnail">
+                            <img src="{{ Storage::url($product->thumbnail) }}" alt="Flowelto Category Thumbnail" class="img-thumbnail thumbnail">
 
                             <h6 class="pt-4 ">{{ $product->name }}</h6>
                         </a>

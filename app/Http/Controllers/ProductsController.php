@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Category;
 use App\User;
 use App\Product;
 use Carbon\Carbon;
-use File;
 
 class ProductsController extends Controller
 {
@@ -57,11 +57,9 @@ class ProductsController extends Controller
         ));
 
         $file = $request->file('thumbnail');
-        $name = strtolower(Str::random(10));
-        $ext = strtolower($file->getClientOriginalExtension());
-        $path = public_path('images/');
-        $filename = $name.'-'.time().".".$ext;
-        $file->move($path, $filename);
+        $path = 'images';
+
+        $thumb = Storage::put('public/'.$path, $file);
 
         $product = new Product;
         $product->name = $request->name;
@@ -69,7 +67,7 @@ class ProductsController extends Controller
         $product->category_id = $request->category_id;
         $product->price = $request->price;
         $product->description = $request->description;
-        $product->thumbnail = $filename;
+        $product->thumbnail = $thumb;
         $product->save();
 
         return redirect()->back();
@@ -128,12 +126,9 @@ class ProductsController extends Controller
 
         if($request->file('thumbnail')){
             $file = $request->file('thumbnail');
-            $name = strtolower(Str::random(10));
-            $ext = strtolower($file->getClientOriginalExtension());
-            $path = public_path('images/');
-            $filename = $name.'-'.time().".".$ext;
-            $file->move($path, $filename);
-            $product->thumbnail = $filename;
+            $path = 'images';
+            $thumb = Storage::put('public/'.$path, $file);
+            $product->thumbnail = $thumb;
         }
 
         $product->save();

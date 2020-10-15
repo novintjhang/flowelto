@@ -4,13 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Category;
 use App\User;
 use Carbon\Carbon;
-use File;
-
-
 
 class CategoriesController extends Controller
 {
@@ -102,14 +100,10 @@ class CategoriesController extends Controller
 
         if($request->file('thumbnail')){
             $file = $request->file('thumbnail');
+            $path = 'images';
 
-            $name = strtolower(Str::random(10));
-            $ext = strtolower($file->getClientOriginalExtension());
-            $path = public_path('images/');
-
-            $filename = $name.'-'.time().".".$ext;
-            $file->move($path, $filename);
-            $category->thumbnail = $filename;
+            $thumb = Storage::put('public/'.$path, $file);
+            $category->thumbnail = $thumb;
         }
         
         $category->save();

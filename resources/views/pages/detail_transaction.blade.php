@@ -20,9 +20,9 @@
                     @foreach($items as $item)
                         <tr>
                             <td class="cart-items">
-                                <img src="{{ asset('images/'.$item->thumbnail) }}" alt="Flowelto Product Thumbnail" class="img-thumbnail cart-thumbnail">
+                                <img src="{{ Storage::url($item->product->thumbnail) }}" alt="Flowelto Product Thumbnail" class="img-thumbnail cart-thumbnail">
                             </td>
-                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->product->name }}</td>
                             <td>{{ $item->price * $item->quantity }}</td>
                             <td>{{ $item->quantity }}</td>
                         </tr>

@@ -31,7 +31,8 @@ class PagesController extends Controller
         $limit = 8;
         if(!$category) return redirect()->route('home');
         if(Auth::user()) $data['user_role'] = User::role();
-        if($request['query']) $data['products'] = Product::where('category_id', '=', $category->id)->where($request['search_type'], 'LIKE', '%'.$request['query'].'%')->paginate($limit);
+        if($request['search_type'] == 'name') $data['products'] = Product::where('category_id', '=', $category->id)->where($request['search_type'], 'LIKE', '%'.$request['query'].'%')->paginate($limit);
+        else if($request['search_type'] == 'price') $data['products'] = Product::where('category_id', '=', $category->id)->where($request['search_type'], 'LIKE', $request['query'])->paginate($limit);
         else $data['products'] = Product::where('category_id', '=', $category->id)->paginate($limit);
 
         $data['categories'] = Category::all();

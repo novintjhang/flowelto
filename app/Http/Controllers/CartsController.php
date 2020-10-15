@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Category;
 use App\Cart;
 use App\User;
 use App\Transaction;
@@ -24,7 +25,7 @@ class CartsController extends Controller
      */
     public function index()
     {
-        $data['items'] = Product::join('carts', 'carts.product_id', '=', 'products.id')->where('user_id', '=', Auth::User()->id)->get();
+        $data['items'] = Cart::where('user_id', '=', Auth::User()->id)->with('product')->get();
         if(Auth::user()) $data['user_role'] = User::role();
         $data['date'] = Carbon::now()->format('l, d F Y');
         $data['categories'] = Category::all();

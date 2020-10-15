@@ -62,7 +62,7 @@ class TransactionsController extends Controller
         if(Auth::user()) $data['user_role'] = User::role();
         $data['date'] = Carbon::now()->format('l, d F Y');
         $data['categories'] = Category::all();
-        $data['items'] = TransactionDetail::where('transaction_id', '=', $id)->join('products', 'products.id' ,'=', 'product_id')->get();
+        $data['items'] = TransactionDetail::where('transaction_id', '=', $id)->with('product')->get();
         return view('pages.detail_transaction')->with($data);
     }
 

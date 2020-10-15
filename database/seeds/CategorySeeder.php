@@ -14,25 +14,25 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([
             'slug' => strtolower(Str::slug('TEST', '-')),
             'name' => 'TEST',
-            'thumbnail' => 'default.svg',
+            'thumbnail' => 'images/default.svg',
         ]);
 
         DB::table('categories')->insert([
             'slug' => strtolower(Str::slug('TEST2', '-')),
             'name' => 'TEST2',
-            'thumbnail' => 'default.svg',
+            'thumbnail' => 'images/default.svg',
         ]);
 
         DB::table('categories')->insert([
             'slug' => strtolower(Str::slug('TEST3', '-')),
             'name' => 'TEST3',
-            'thumbnail' => 'default.svg',
+            'thumbnail' => 'images/default.svg',
         ]);
 
         DB::table('categories')->insert([
             'slug' => strtolower(Str::slug('TEST4', '-')),
             'name' => 'TEST4',
-            'thumbnail' => 'default.svg',
+            'thumbnail' => 'images/default.svg',
         ]);
     }
 }

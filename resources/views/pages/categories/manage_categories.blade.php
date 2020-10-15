@@ -9,7 +9,7 @@
                 <div class="card text-center">
                     <div class="card-body">
                         <a href="{{ route('product_category', $category->slug)}}">
-                            <img src="{{ asset('images/'.$category->thumbnail) }}" alt="Flowelto Category Thumbnail" class="img-thumbnail thumbnail">
+                            <img src="{{ Storage::url($category->thumbnail) }}" alt="Flowelto Category Thumbnail" class="img-thumbnail thumbnail">
 
                             <h6 class="pt-4 ">{{ $category->name }}</h6>
                         </a>
