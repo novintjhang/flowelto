@@ -52,7 +52,7 @@ class CartsController extends Controller
     {
         $this->validate($request, array(
             'productId' => 'required',
-            'quantity' => 'required|numeric|min:1',
+            'quantity' => 'required|integer|min:1',
         ));
 
         $cart = Cart::where('user_id', '=', Auth::User()->id)->where('product_id', '=', $request->productId)->first();

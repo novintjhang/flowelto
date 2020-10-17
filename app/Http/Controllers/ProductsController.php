@@ -51,7 +51,7 @@ class ProductsController extends Controller
         $this->validate($request, array(
             'category_id' => 'required',
             'name' => 'required|unique:products|min:5',
-            'price' => 'required|numeric|min:50000',
+            'price' => 'required|integer|min:50000',
             'description' => 'required|min:20',
             'thumbnail' => 'required|mimes:jpeg,jpg,png,bmp,tiff,svg|max:4096',
         ));
@@ -112,7 +112,7 @@ class ProductsController extends Controller
         $this->validate($request, array(
             'category_id' => 'required',
             'name' => 'required|unique:products|min:5',
-            'price' => 'required|numeric|min:50000',
+            'price' => 'required|integer|min:50000',
             'description' => 'required|min:20',
             'thumbnail' => 'nullable|mimes:jpeg,jpg,png,bmp,tiff,svg|max:4096',
         ));

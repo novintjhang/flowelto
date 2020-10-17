@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
-    
+    <div class="text-center">
+        <h4>Our {{ $current_category->name }}</h4>
+    </div>
     <div class="pl-5">
         <form method="POST" action="#" enctype="multipart/form-data">
             {{ csrf_field() }}

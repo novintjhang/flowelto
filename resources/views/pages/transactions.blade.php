@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center pt-4">
-        <h4 class="title">Your Cart</h4>
+        <h4 class="title">Your Transaction History</h4>
     </div>
     <div class="row justify-content-center pt-4">
         <div class="col-lg-10">

@@ -36,6 +36,7 @@ class PagesController extends Controller
         else $data['products'] = Product::where('category_id', '=', $category->id)->paginate($limit);
 
         $data['categories'] = Category::all();
+        $data['current_category'] = $category;
         $data['date'] = Carbon::now()->format('l, d F Y');
         return view('pages.products.product_list')->with($data);
     }

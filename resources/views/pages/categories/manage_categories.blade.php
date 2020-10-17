@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+    <div class="text-center">
+        <h4>Manage Categories</h4>
+    </div>
     <div class="row justify-content-center"> 
         
         @foreach($categories as $category)

@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+    <div class="text-center">
+        <h4>Add New Flower</h4>
+    </div>
     <div class="row justify-content-center pt-4">
         <div class="col-md-6 pl-5">
             @foreach ($errors->all() as $error)
