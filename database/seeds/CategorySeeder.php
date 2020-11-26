@@ -12,27 +12,27 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            'slug' => strtolower(Str::slug('TEST', '-')),
-            'name' => 'TEST',
-            'thumbnail' => 'images/default.svg',
+            'slug' => strtolower(Str::slug('Roses', '-')),
+            'name' => 'Roses',
+            'thumbnail' => 'images/roses.jpeg',
         ]);
 
         DB::table('categories')->insert([
-            'slug' => strtolower(Str::slug('TEST2', '-')),
-            'name' => 'TEST2',
-            'thumbnail' => 'images/default.svg',
+            'slug' => strtolower(Str::slug('Birthday Bouquet', '-')),
+            'name' => 'Birthday Bouquet',
+            'thumbnail' => 'images/birthdaybouquet.jpeg',
         ]);
 
         DB::table('categories')->insert([
-            'slug' => strtolower(Str::slug('TEST3', '-')),
-            'name' => 'TEST3',
-            'thumbnail' => 'images/default.svg',
+            'slug' => strtolower(Str::slug('Daisies', '-')),
+            'name' => 'Daisies',
+            'thumbnail' => 'images/daisies.jpeg',
         ]);
 
         DB::table('categories')->insert([
-            'slug' => strtolower(Str::slug('TEST4', '-')),
-            'name' => 'TEST4',
-            'thumbnail' => 'images/default.svg',
+            'slug' => strtolower(Str::slug('Plant', '-')),
+            'name' => 'Plant',
+            'thumbnail' => 'images/plant.jpeg',
         ]);
     }
 }
