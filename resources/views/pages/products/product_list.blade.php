@@ -16,13 +16,13 @@
             <input type="text" name="query" class="form-control col-md-2" style="display: inline-block;" placeholder="Search">
         </form>
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center pt-4">
         @foreach($products as $product)
-            <div class="col-md-4 pt-4">
+            <div class="col-md-3 pb-4">
                 <div class="card text-center">
                     <div class="card-body">
                         <a href="{{ route('product', $product->slug)}}">
-                            <img src="{{ Storage::url($product->thumbnail) }}" alt="Flowelto Category Thumbnail" class="img-thumbnail thumbnail">
+                            <img src="{{ Storage::url($product->thumbnail) }}" alt="Flowelto Category Thumbnail" class="img-thumbnail ">
 
                             <h6 class="pt-4 ">{{ $product->name }}</h6>
                         </a>

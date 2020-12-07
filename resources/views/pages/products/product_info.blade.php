@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-7 pl-5">
             <h5>{{ $product->name }}</h5>
-            <span class="price">Rp {{ $product->price }}</span>
+            <span class="badge badge-warning price">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
             <p class="description">
                 {!! $product->description !!}
             </p>

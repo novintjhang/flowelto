@@ -24,14 +24,14 @@
                                 <img src="{{ Storage::url($item->product->thumbnail) }}" alt="Flowelto Product Thumbnail" class="img-thumbnail cart-thumbnail">
                             </td>
                             <td>{{ $item->product->name }}</td>
-                            <td>{{ $item->product->price * $item->quantity }}</td>
+                            <td>Rp {{ number_format($item->product->price * $item->quantity, 0, ',', '.') }}</td>
                             <td>{{ $item->quantity }}</td>
                         </tr>
                         @php $total_price += ($item->product->price * $item->quantity); @endphp
                     @endforeach
                 </tbody>
               </table>
-              <span class="float-right">Total Price: Rp {{ $total_price }}</span>
+              <span class="float-right">Total Price: Rp {{ number_format($total_price, 0, ',', '.') }}</span>
         </div>
     </div>
 </div>

@@ -25,7 +25,6 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        if(Auth::user()) $data['user_role'] = User::role();
         $data['date'] = Carbon::now()->format('l, d F Y');
         $data['categories'] = Category::all();
         if($data['categories']) return view('pages.categories.manage_categories')->with($data);
@@ -72,7 +71,6 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        if(Auth::user()) $data['user_role'] = User::role();
         $data['date'] = Carbon::now()->format('l, d F Y');
         $data['categories'] = Category::all();
         $data['category'] = Category::find($id);

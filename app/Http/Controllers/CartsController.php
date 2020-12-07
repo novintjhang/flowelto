@@ -26,7 +26,6 @@ class CartsController extends Controller
     public function index()
     {
         $data['items'] = Cart::where('user_id', '=', Auth::User()->id)->with('product')->get();
-        if(Auth::user()) $data['user_role'] = User::role();
         $data['date'] = Carbon::now()->format('l, d F Y');
         $data['categories'] = Category::all();
         return view('pages.cart')->with($data);

@@ -34,7 +34,6 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        if(Auth::user()) $data['user_role'] = User::role();
         $data['date'] = Carbon::now()->format('l, d F Y');
         $data['categories'] = Category::all();
         return view('pages.products.create_product')->with($data); 
@@ -92,7 +91,6 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        if(Auth::user()) $data['user_role'] = User::role();
         $data['date'] = Carbon::now()->format('l, d F Y');
         $data['categories'] = Category::all();
         $data['product'] = Product::find($id);
@@ -132,7 +130,7 @@ class ProductsController extends Controller
         }
 
         $product->save();
-        return redirect()->route('product_category');
+        return redirect()->route('product', $product->slug);
     }
 
     /**

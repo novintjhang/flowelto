@@ -27,7 +27,6 @@ class ChangePasswordController extends Controller
     {
         $data['date'] = Carbon::now()->format('l, d F Y');
         $data['categories'] = Category::all();
-        if(Auth::user()) $data['user_role'] = User::role();
         return view('auth.changepassword')->with($data);
     }
 

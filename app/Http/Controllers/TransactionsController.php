@@ -23,7 +23,6 @@ class TransactionsController extends Controller
      */
     public function index()
     {
-        if(Auth::user()) $data['user_role'] = User::role();
         $data['date'] = Carbon::now()->format('l, d F Y');
         $data['categories'] = Category::all();
         $data['transactions'] = Transaction::where('user_id', '=', Auth::User()->id)->orderBy('created_at', 'desc')->get();
@@ -37,7 +36,7 @@ class TransactionsController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -59,7 +58,6 @@ class TransactionsController extends Controller
      */
     public function show($id)
     {
-        if(Auth::user()) $data['user_role'] = User::role();
         $data['date'] = Carbon::now()->format('l, d F Y');
         $data['categories'] = Category::all();
         $data['transaction'] = Transaction::find($id);

@@ -8,7 +8,7 @@
     <div class="row justify-content-center"> 
         
         @foreach($categories as $category)
-            <div class="col-md-4 pt-4">
+            <div class="col-md-6 pt-4">
                 <div class="card text-center">
                     <div class="card-body">
                         <a href="{{ route('product_category', $category->slug)}}">
